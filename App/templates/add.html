@@ -1,0 +1,74 @@
+{% extends 'base.html'%}
+
+<!--Titre du navigateur-->
+{% block title %}Ajout des Patients{% endblock title %}
+<!-- contenu du navbar-->
+{% block navbar-content %}
+<i class="fas fa-user-plus"></i>&nbsp;&nbsp; AJOUT DES PATIENTS
+{% endblock navbar-content %}
+
+<!-- Boutton au navbar -->
+{% block nav-btn %}
+<a href="{% url 'logout' %}" class="btn btn-outline-danger text-light border-light btn-sm" id="btn-nav">DECONNEXION</a>
+{% endblock nav-btn %}
+
+
+<!-- Contenu de la page-->
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body border-dark text-primary mt-3">
+
+                <h4 class="text-center"><span><b>INFORMATIONS SUR LE PATIENT</b></span></h4>
+            </div>
+
+            <!-- formulaire-->
+            <form action="/add_patient" method="POST" enctype="multipart/form-data" class="card p-2 border-dark mt-2">
+                {% csrf_token%}
+                <div class="input-group input-group-sm-mb-3 p-2">
+                    <span class="input-group-text side-label">NOM</span>
+                    <input type="text" class="form-control" name="name" placeholder="Nom du patient..." required>
+                </div>
+                <div class="input-group input-group-sm-mb-3 p-2">
+                    <span class="input-group-text side-label">PRENOM</span>
+                    <input type="text" class="form-control" name="prename" placeholder="Prénom du patient..." required>
+                </div>
+
+                <div class="input-group input-group-sm-mb-3 p-2">
+                    <span class="input-group-text side-label">PHONE</span>
+                    <input type="text" class="form-control" name="phone" placeholder="Phone du patient..." required>
+                </div>
+                <div class="input-group input-group-sm-mb-3 p-2">
+                    <span class="input-group-text side-label">AGE</span>
+                    <input type="text" class="form-control" name="age" placeholder="Age du patient..." required>
+                </div>
+
+                <div class="input-group input-group-sm-mb-3 p-2">
+                    <label class="input-group-text side-label">SEXE</label>
+                    <select class="form-select" name="sexe" required>
+                        <optionhidden>Selectionner le sexe du patient</option>
+                        <option value="" disabled ></option>
+                        <option>M</option>
+                        <option>F</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group p-2">
+                    <textarea class="form-control" name="note" cols="1" rows="7" placeholder="Observation (facultatif)..."></textarea>
+                </div>
+
+                <div class="d-grid grap-2 p-2">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-plus"></i>&nbsp; AJOUTER
+                    </button>
+                    <a href="{% url 'backend' %}" class="btn btn-outline-dark btn-sm mt-2"><i class="fas fa-chevron-left"></i>&nbsp; PRECEDENT</a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content%}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+<!--Titre du navigateur-->
+{% block title %}Login{% endblock title %}
+<!-- contenu du navbar-->
+{% block navbar-content %}
+<i class="fas fa-stethoscope"></i>&nbsp;&nbsp; LOGIN
+{% endblock navbar-content %}
+
+<!-- Boutton au navbar -->
+{% block nav-btn %}
+<a href="{% url 'frontend' %}" class="btn btn-outline-primary text-light border-light btn-sm" id="btn-nav">RETOUR</a>
+{% endblock nav-btn %}
+
+
+
+
+<!-- ===================== Contenu de la page ===================== -->
+{% block content %}
+<div class="container mt-5">
+    <div class="card p-3 border-dark">
+        <a href="" class="btn btn-outline-dark mt-3"><i class="fas fa-lock"></i>&nbsp;&nbsp; ACCES RESTREINT</a>
+        <form method="POST" autocomplete="off" novalidate>
+            {% csrf_token %}
+            <div class="input-group mb-3 mt-5">
+                <span class="input-group-text side-label"><i class="fas fa-user-alt"></i></span>
+                <input type="text" class="form-control" name="username" placeholder="Nom de l'admin...">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text side-label"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" name="password" placeholder="Mot de passe...">
+            </div>
+
+            <input class="btn btn-outline-primary btn-sm mt-4 mb-3 p-2" type="submit" value="VALIDER">
+
+        </form>
+    </div>
+</div>
+{% endblock content %}

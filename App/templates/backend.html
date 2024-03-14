@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+<!--Titre du navigateur-->
+{% block title %}Patients{% endblock title %}
+<!-- contenu du navbar-->
+{% block navbar-content %}
+<i class="fas fa-hospital-user"></i>&nbsp;&nbsp; PATIENTS
+{% endblock navbar-content %}
+
+<!-- Boutton au navbar -->
+{% block nav-btn %}
+<a href="{% url 'logout' %}" class="btn btn-outline-danger text-light border-light btn-sm" id="btn-nav">DECONNEXION</a>
+{% endblock nav-btn %}
+
+<!-- ===================== Contenu de la page ===================== -->
+{% block content %}
+<h1 class="text-center text-success">Backend page</h1>
+<br>
+<center>
+    <a href="{% url 'add_patient' %}" class="btn btn-outline-primary btn-sm text-center" style="width: 150px;">Ajouter un patient</a>
+</center>
+{% endblock content %}
